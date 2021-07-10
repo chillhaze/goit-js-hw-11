@@ -11,7 +11,7 @@ const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const onStartBtnClick = evt => {
+const onStartBtnClick = () => {
   refs.start.setAttribute('disabled', true);
   changeColorTimer = setInterval(() => {
     let randomColor = colors[randomIntegerFromInterval(0, colors.length - 1)];
