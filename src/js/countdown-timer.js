@@ -40,7 +40,7 @@ class Timer {
 
     this.intervalId = setInterval(() => {
       const deltaTime = selectedDate - Date.now();
-      console.log(deltaTime);
+      // console.log(deltaTime);
       const timeToCount = this.convertMs(deltaTime);
 
       // ссылка на функцию updateDateFace
@@ -56,6 +56,7 @@ class Timer {
   stop() {
     clearInterval(this.intervalId);
     this.isActive = false;
+    refs.secs.classList.remove('countdown-started');
   }
 
   // Изменяет формат на "хх:хх:хх:хх"
@@ -91,10 +92,10 @@ function onStartBtnPush() {
 
   if (selectedDate < currentDate) {
     Swal.fire('Please choose a date in the future');
-  } else if (selectedDate > currentDate) {
+  } else if (refs.secs.classList.contains('countdown-started')) {
+    Swal.fire(`Oops!) Please push "Stop coutdown" first`);
+  } else {
     timer.start();
-  } else if (selectedDate !== selectedDate) {
-    Swal.fire(`Please push 'Stop coundown' button`);
   }
 }
 
@@ -104,6 +105,7 @@ function updateDateFace({ days, hours, minutes, seconds }) {
   refs.hours.textContent = `${hours}`;
   refs.mins.textContent = `${minutes}`;
   refs.secs.textContent = `${seconds}`;
+  refs.secs.classList.add('countdown-started');
 }
 
 // Экземпляр класса Timer
