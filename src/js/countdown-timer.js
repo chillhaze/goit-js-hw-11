@@ -34,6 +34,7 @@ class Timer {
     this.isActive = true;
 
     const stopBtn = document.createElement('button');
+    stopBtn.classList.add('btn');
     stopBtn.setAttribute('data-stop', '');
     stopBtn.textContent = 'Stop countdown';
     refs.textField.append(stopBtn);

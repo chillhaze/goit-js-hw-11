@@ -5,13 +5,47 @@ body {
   background-color: rgb(216, 243, 211);
   color: #424242;
   max-width: 960px;
-  padding: 16px;
+  padding: 16px 0;
 
   text-align: center;
 
   margin: 0 auto;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
 .wrapper {
   padding: 15px;
+
+  border-bottom: 1px solid #424242;
+}
+
+.task-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.task-prompt {
+  padding-bottom: 20px;
+
+  font-style: italic;
+  font-size: 12px;
+}
+
+.btn {
+  min-width: 80px;
+  padding: 6px 45px;
+  border: 1px solid #424242;
+  border-radius: 3px;
 }
