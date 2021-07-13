@@ -13,9 +13,7 @@ const refs = {
 // Слушатели событий
 refs.startBtn.setAttribute('disabled', true);
 refs.startBtn.addEventListener('click', onStartBtnPush);
-refs.input.addEventListener('change', () => {
-  refs.startBtn.removeAttribute('disabled', true);
-});
+refs.input.addEventListener('change', onDateSelect);
 
 //  класс Timer (выполняет только рассчет даты/времени)
 class Timer {
@@ -86,16 +84,27 @@ class Timer {
   }
 }
 
-// Реакция на нажатие кнопки 'Start Countdown'
-function onStartBtnPush() {
+// Реакция на выбор даты в прошлом
+function onDateSelect() {
   const selectedDate = Date.parse(refs.input.value);
   const currentDate = Date.now();
 
   if (selectedDate < currentDate) {
     Swal.fire('Please choose a date in the future');
-  } else if (refs.secs.classList.contains('countdown-started')) {
-    Swal.fire(`Oops!) Please push "Stop coutdown" first`);
+    refs.startBtn.setAttribute('disabled', true);
   } else {
+    refs.startBtn.removeAttribute('disabled', true);
+  }
+}
+
+// Реакция на нажатие кнопки 'Start Countdown'
+function onStartBtnPush() {
+  const selectedDate = Date.parse(refs.input.value);
+  const currentDate = Date.now();
+
+  if (refs.secs.classList.contains('countdown-started')) {
+    Swal.fire(`Oops!) Please push "Stop coutdown" first`);
+  } else if (selectedDate > currentDate && selectedDate !== NaN) {
     timer.start();
   }
 }
