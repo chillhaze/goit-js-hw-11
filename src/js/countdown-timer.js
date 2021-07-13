@@ -35,7 +35,7 @@ class Timer {
     stopBtn.classList.add('btn');
     stopBtn.setAttribute('data-stop', '');
     stopBtn.textContent = 'Stop countdown';
-    refs.textField.append(stopBtn);
+    refs.textField.after(stopBtn);
 
     this.intervalId = setInterval(() => {
       const deltaTime = selectedDate - Date.now();
@@ -104,8 +104,21 @@ function onStartBtnPush() {
 
   if (refs.secs.classList.contains('countdown-started')) {
     Swal.fire(`Oops!) Please push "Stop coutdown" first`);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Please push "Stop coutdown" first',
+      footer: '<a href="">Why do I have this issue?</a>',
+    });
   } else if (selectedDate > currentDate && selectedDate !== NaN) {
     timer.start();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Countdown started',
+      showConfirmButton: false,
+      timer: 1000,
+    });
   }
 }
 

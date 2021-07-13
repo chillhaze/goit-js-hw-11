@@ -4,9 +4,37 @@ input {
   border-radius: 3px;
 }
 
+.timer-wrapper {
+  margin: 20px;
+  background-color: rgb(12 58 143 / 15%);
+  border: 1px solid #000;
+  border-radius: 14px;
+}
 .field {
   font-family: inherit;
   font-weight: bold;
   font-size: 20px;
   text-transform: uppercase;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+
+  padding: 20px 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 20px;
+}
+
+.value {
+  font-size: 40px;
+}
+
+.label {
+  font-size: 15px;
 }
